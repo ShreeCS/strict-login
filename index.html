@@ -33,13 +33,32 @@
     <input type="checkbox" name="check1" id="check" onclick="resetBtn()">
     <label for="check" class="label">I agree to the 'Terms and policies'.</label>
 
-    <input type="submit" id="submit-btn" value="Sign Up" onmouseover="mouseOver()">
+    <input type="button" id="submit-btn" value="Sign Up" onmouseover="mouseOver()" style="cursor: not-allowed;" disabled>
 </form>
 </div>
 
 <script>
 
     var a = 0;
+
+    function checkForm(){
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const pass = document.getElementById('pass').value;
+        const tick = document.getElementById('check').checked;
+
+        // Email validation pattern
+        const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        // Check if all criteria are met
+        if (name !== "" && email.match(emailCheck) && pass.length >= 8 && tick) {
+            document.getElementById('submit-btn').disabled = false;
+            document.getElementById('submit-btn').style.cursor = 'pointer';
+        } else {
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('submit-btn').style.cursor = 'not-allowed';
+        }
+    }
 
     function mouseOver(){
         

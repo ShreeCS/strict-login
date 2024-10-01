@@ -47,10 +47,8 @@
         const pass = document.getElementById('pass').value;
         const tick = document.getElementById('check').checked;
 
-        // Email validation pattern
         const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        // Check if all criteria are met
         if (name !== "" && email.match(emailCheck) && pass.length >= 8 && tick) {
             document.getElementById('submit-btn').disabled = false;
             document.getElementById('submit-btn').style.cursor = 'pointer';
@@ -61,57 +59,56 @@
     }
 
     function mouseOver(){
-        
         const name = document.forms['suForm']['name'].value;
         const email = document.forms['suForm']['email'].value;
         const pass = document.forms['suForm']['pass'].value;
-        const tick = document.querySelector('#check');
+        const tick = document.querySelector('#check').checked;
 
         const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-
-
-        if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==0){
-        buttonMoveLeft();
-        a = 1;
-        return false;
+        if((name === "" || !email.match(emailCheck) || pass === "" || !tick) && a === 0){
+            buttonMoveLeft();
+            a = 1;
+            return false;
         } 
 
-        if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==1){
-        buttonMoveRight();
-        a = 2;
-        return false;
+        if((name === "" || !email.match(emailCheck) || pass === "" || !tick) && a === 1){
+            buttonMoveRight();
+            a = 2;
+            return false;
         } 
 
-        if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==2){
-        buttonMoveLeft();
-        a = 1;
-        return false;
+        if((name === "" || !email.match(emailCheck) || pass === "" || !tick) && a === 2){
+            buttonMoveLeft();
+            a = 1;
+            return false;
         } 
-
-        else{
-            // document.getElementById('submit-btn').click();
+        else {
             document.getElementById('submit-btn').style.cursor = 'pointer';
             return false;
-        };
+        }
+    }
 
-    };
     function buttonMoveLeft(){
-
         const button = document.getElementById('submit-btn');
         button.style.transform = 'translateX(-160%)';
+    }
 
-    };
     function buttonMoveRight(){
-
         const button = document.getElementById('submit-btn');
         button.style.transform = 'translateX(0%)';
+    }
 
-    };
     function resetBtn(){
         const button = document.getElementById('submit-btn');
         button.style.transform = 'translateX(0%)';
-    };
+    }
+
+    function submitForm() {
+        if (!document.getElementById('submit-btn').disabled) {
+            document.getElementById('supform').submit();
+        }
+    }
 </script>
 </body>
 </html>
